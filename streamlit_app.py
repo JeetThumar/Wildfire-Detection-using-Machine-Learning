@@ -74,9 +74,13 @@ if st.button("🔍 Predict Wildfire"):
 # EDA Section
 st.markdown("---")
 st.subheader("📊 Correlation Heatmap of Features")
+
+# Select only numeric columns for correlation heatmap
+numeric_df = df.select_dtypes(include='number')
 fig, ax = plt.subplots(figsize=(10, 6))
-sns.heatmap(df.corr(), cmap='coolwarm', ax=ax)
+sns.heatmap(numeric_df.corr(), cmap='coolwarm', ax=ax)
 st.pyplot(fig)
+
 
 # Footer
 st.markdown("---")
